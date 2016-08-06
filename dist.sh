@@ -34,7 +34,7 @@ do_npm_install() { # arguments passed through to npm install
 		export OCTBSTACK_LIBS=$( pkg-config --libs octbstack )
 	fi
 
-	npm install "$@"
+	npm install "$@" --unsafe-perm
 }
 
 buildBroken() {
@@ -156,7 +156,7 @@ if test "x${DO_DEVREINST}x" = "xTRUEx"; then
 	echo "*** Re-installing dependencies ***"
 
 	# Restore devDependencies after having created the distribution package
-	npm install --ignore-scripts
+	npm install --ignore-scripts --unsafe-perm
 fi
 
 if test "x${DO_BUILD}x" = "xTRUEx"; then
